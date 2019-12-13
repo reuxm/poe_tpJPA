@@ -74,4 +74,20 @@ public class Dao {
 			closeEntityManager(em);
 		}
 	}
+	
+	public void updatePerson(Person p) {
+	}
+	
+	public void removePerson(Long id) {
+		EntityManager em = null;
+		try {
+			em = newEntityManager();
+			Person p = em.find( Person.class, id );
+			em.remove( p );
+			em.getTransaction().commit();
+		} finally {
+			closeEntityManager(em);
+		}
+		
+	}
 }
